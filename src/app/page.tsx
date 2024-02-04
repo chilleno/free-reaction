@@ -9,12 +9,12 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center gap-5">
       <iframe
         id="iframe_youtube"
         src="https://www.youtube.com/embed/44Q42FB0v5I?enablejsapi=1&origin=http://localhost:3000&controls=0"
         width="640"
-        height="600"
+        height="340"
       />
       <div id="reaction_control_buttons" className="flex flex-row gap-5 items-center hidden">
         <div className="flex gap-5">
