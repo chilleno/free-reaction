@@ -5,8 +5,8 @@ var reactionStartAt = document.getElementById('reaction_start_at').value
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('iframe_youtube', {
-        height: '360',
-        width: '640',
+        height: '340',
+        width: '600',
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
