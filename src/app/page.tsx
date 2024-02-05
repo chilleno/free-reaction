@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [volume, setVolume] = useState(100);
+  const [startAt, setStartAt] = useState(433.938901);
 
   const changeVolume = (e: any) => {
     setVolume(e.target.value);
@@ -44,7 +45,7 @@ export default function Home() {
         >
           <h6 id="reaction_current_time_formatted">0:00</h6>
           <input id="reaction_current_time" type="number" className="text-black max-w-14 text-right rounded-sm hidden" />
-          <input id="reaction_start_at" defaultValue={433.938901} type="number" className="text-black max-w-14 text-right rounded-sm hidden" />
+          <input id="reaction_start_at" defaultValue={startAt} type="number" className="text-black max-w-14 text-right rounded-sm hidden" />
         </div>
       </div>
     </main>
