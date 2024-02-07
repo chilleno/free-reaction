@@ -34,10 +34,6 @@ function logProgress() {
     //change value of volume_value_input to currentTime
     document.getElementById('reaction_current_time').value = player.getCurrentTime()
     document.getElementById('reaction_current_time_formatted').innerHTML = formattedTime;
-
-    if(player.getCurrentTime() >= reactionStartAt){
-        console.log('reaction started')
-    }
 }
 
 var done = false;
@@ -117,7 +113,7 @@ document.getElementById('pause_button_reaction').addEventListener('click', funct
 //function that show alert every time I press space barn
 document.addEventListener('keydown', function (event) {
     if (event.keyCode === 32) {
-        alert('space bar pressed')
+        console.info('space bar pressed')
     }
 })
 
@@ -135,3 +131,16 @@ observer = new MutationObserver(function (mutationsList, observer) {
 // call 'observe' on that MutationObserver instance, 
 // passing it the element to observe, and the options object
 observer.observe(elementToObserve, { characterData: false, childList: false, attributes: true });
+
+
+// Simulate pressing the spacebar
+function simulateSpacebarPress() {
+    var spacebarEvent = new KeyboardEvent('keydown', {
+        key: ' ',
+        code: 'Space',
+        keyCode: 32,
+        which: 32,
+    });
+
+    document.dispatchEvent(spacebarEvent);
+}
