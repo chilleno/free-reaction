@@ -12,12 +12,12 @@ export default function Home({ params }: { params: { slug: string } }) {
   console.log(params.slug)
 
   return (
-    <main className="flex flex-col items-center gap-5">
+    <main className="flex flex-col items-center gap-5 mt-2">
       <iframe
         id="iframe_youtube"
-        src={"https://www.youtube.com/embed/"+params.slug[0]+"?enablejsapi=1&origin=http://localhost:3000&controls=0"}
-        width="640"
-        height="340"
+        src={"https://www.youtube.com/embed/"+params.slug[0]+"?enablejsapi=1&origin=https://www.reaction-free.com&controls=0"}
+        width="590"
+        height="330"
       />
       <div id="reaction_control_buttons" className="flex flex-row gap-5 items-center hidden">
         <div className="flex gap-5">
