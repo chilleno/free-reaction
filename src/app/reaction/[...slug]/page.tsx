@@ -1,19 +1,21 @@
 "use client"
 import { useState } from "react";
 
-export default function Home() {
+export default function Home({ params }: { params: { slug: string } }) {
   const [volume, setVolume] = useState(100);
-  const [startAt, setStartAt] = useState(159);
+  const [startAt, setStartAt] = useState(params.slug[1]);
 
   const changeVolume = (e: any) => {
     setVolume(e.target.value);
   }
 
+  console.log(params.slug)
+
   return (
     <main className="flex flex-col items-center gap-5">
       <iframe
         id="iframe_youtube"
-        src="https://www.youtube.com/embed/SeEcF7uizEE?enablejsapi=1&origin=http://localhost:3000&controls=0"
+        src={"https://www.youtube.com/embed/"+params.slug[0]+"?enablejsapi=1&origin=http://localhost:3000&controls=0"}
         width="640"
         height="340"
       />

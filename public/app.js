@@ -1,7 +1,7 @@
 var player;
 var currentVolume = 100;
 
-var reactionStartAt = document.getElementById('reaction_start_at').value
+var reactionStartAt = document.getElementById('reaction_start_at').value;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('iframe_youtube', {
@@ -57,6 +57,8 @@ function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.PAUSED) {
         console.log('video paused')
 
+        //set value to is_reaction_running element to 0
+        document.getElementById('is_reaction_running').value = 0
         // remove class hidden to element with id = play_button_reaction
         document.getElementById('play_button_reaction').classList.remove('hidden')
 
@@ -78,6 +80,9 @@ function onPlayerStateChange(event) {
 
     if (event.data === YT.PlayerState.PLAYING) {
         console.log('video playing')
+
+        //set value to is_reaction_running element to 1
+        document.getElementById('is_reaction_running').value = 1
 
         // remove class hidden to element with id = pause_button_reaction
         document.getElementById('pause_button_reaction').classList.remove('hidden')
@@ -108,6 +113,7 @@ document.getElementById('play_button_reaction').addEventListener('click', functi
 //add a function that show alert when pause_button_reaction is clicked
 document.getElementById('pause_button_reaction').addEventListener('click', function () {
     player.pauseVideo()
+
 })
 
 //function that show alert every time I press space barn

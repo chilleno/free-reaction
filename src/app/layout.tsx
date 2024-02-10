@@ -21,10 +21,11 @@ export default function RootLayout({
       <Script
         src="https://www.youtube.com/iframe_api"
       />
-      <Script
-        src="./app.js" />
-
+    
       <body className={inter.className}>{children}</body>
+
+      <Script
+        src="/app.js" />
     </html>
   );
 }
