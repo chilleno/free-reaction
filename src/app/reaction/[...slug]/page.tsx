@@ -15,7 +15,7 @@ export default function Home({ params }: { params: { slug: string } }) {
     <main className="flex flex-col items-center gap-5 mt-2">
       <iframe
         id="iframe_youtube"
-        src={"https://www.youtube.com/embed/"+params.slug[0]+"?enablejsapi=1&origin=https://www.reaction-free.com&controls=0"}
+        src={"https://www.youtube-nocookie.com/embed/"+params.slug[0]+"?enablejsapi=1&origin=https://www.reaction-free.com&controls=0"}
         width="590"
         height="330"
       />
