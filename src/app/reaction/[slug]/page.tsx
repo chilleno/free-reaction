@@ -21,13 +21,13 @@ export default function Home({ params }: { params: { slug: string } }) {
         <div className="flex gap-5">
           <button
             id="play_button_reaction"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hidden"
+            className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded hidden"
           >
             Play
           </button>
           <button
             id="pause_button_reaction"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded"
           >
             Pause
           </button>
@@ -35,13 +35,13 @@ export default function Home({ params }: { params: { slug: string } }) {
 
         <div
           id="volume"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex gap-2"
+          className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded flex gap-2"
         >
           <input type="range" value={volume} onChange={changeVolume} />
           <input id="volume_value_input" type="number" className="text-black max-w-14 text-right rounded-sm" value={volume} readOnly onChange={(e) => e.preventDefault} />
         </div>
         <div
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex gap-2"
+          className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded flex gap-2"
         >
           <h6 id="reaction_current_time_formatted">0:00</h6>
           <input id="reaction_current_time" type="number" className="text-black max-w-14 text-right rounded-sm hidden" />
