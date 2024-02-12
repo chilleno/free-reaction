@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-green-top-bg {
+    background: rgb(47, 107, 60) !important;
+    background: linear-gradient(180deg, rgba(47, 107, 60, 1) 30%, rgba(0, 143, 217, 1) 70%) !important;
+}
+
+.gradient-green-bottom-bg {
+    background: rgb(47, 107, 60) !important;
+    background: linear-gradient(0deg, rgba(47, 107, 60, 1) 30%, rgba(0, 143, 217, 1) 70%) !important;
+}
+
+.gradient-green-y-bg {
+    background: rgb(47, 107, 60) !important;
+    background: linear-gradient(0deg, rgba(47, 107, 60, 1) 9%, rgba(0, 143, 217, 1) 51%, rgba(47, 107, 60, 1) 90%) !important;
+}
