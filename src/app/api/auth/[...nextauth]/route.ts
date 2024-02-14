@@ -26,13 +26,13 @@ const handler = NextAuth({
 
       const { data } = await supabase
         .from('users')
-        .select('profile_id')
+        .select('profile')
         .eq('id', user.id)
         .single();
 
       if (session?.user) {
         session.user.id = user.id as string;
-        session.user.profile_id = data?.profile_id as string;
+        session.user.profile = data?.profile as string;
       }
       return session;
     },
