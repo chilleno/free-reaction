@@ -4,7 +4,7 @@ declare module 'next-auth' {
   interface Session {
     user?: DefaultUser & {
       id: string;
-      profile_id: string;
+      profile: string;
     };
   }
 }
