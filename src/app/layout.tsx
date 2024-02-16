@@ -9,10 +9,10 @@ import { Analytics } from '@vercel/analytics/react';
 export const metadata: Metadata = {
   title: {
     template: '%s - Reaction Free',
-    default: 'Reaction Free - Accounting made simple for small businesses',
+    default: "Reaction Free - Allow your subscribers to watch your reactions in real-time meanwhile they're watching the original video.",
   },
   description:
-    'Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.',
+    'Discover a platform designed for content creators who value integrity and originality. Explore Reaction Free and unleash your creativity without fear of copyright infringement.',
 }
 
 const inter = Inter({
