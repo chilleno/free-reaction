@@ -1,13 +1,10 @@
 "use client"
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { LinkIcon } from '@heroicons/react/20/solid'
 import supabase from '@/utils/supabase';
 
-const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean }) => {
-
-    const [open, setOpen] = useState(openModal)
+const NewReaction = ({ userId, open, closeModal }: { userId: string, open: boolean, closeModal(): void }) => {
     const [title, setTitle] = useState<string>('')
     const [startAt, setStartAt] = useState('')
     const [youtubeLink, setYoutubeLink] = useState('')
@@ -51,7 +48,7 @@ const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean 
     }
 
     //create function to insert with supabase adapter 
-    const handleSave = async (e:any) => {
+    const handleSave = async (e: any) => {
         e.preventDefault()
         if (title === '') {
             alert('The reaction name is required');
@@ -78,7 +75,7 @@ const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean 
             .insert({ title: title, reaction_start_time: convertToSeconds(startAt), youtube_video_code: youtubeLink, user_id: userId, reacted_content_url: reactedContent })
         if (status === 201) {
             alert('Reaction created successfully');
-            setOpen(false);
+            closeModal()
         } else {
             alert('Error creating reaction');
         }
@@ -100,7 +97,7 @@ const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean 
 
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={setOpen}>
+            <Dialog as="div" className="relative z-10" onClose={closeModal}>
                 <div className="fixed inset-0" />
 
                 <div className="fixed inset-0 overflow-hidden">
@@ -127,7 +124,7 @@ const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean 
                                                         <button
                                                             type="button"
                                                             className="relative rounded-md bg-[#193919] text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                                                            onClick={() => setOpen(false)}
+                                                            onClick={() => closeModal()}
                                                         >
                                                             <span className="absolute -inset-2.5" />
                                                             <span className="sr-only">Close panel</span>
@@ -222,20 +219,6 @@ const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="pb-6 pt-4">
-                                                        <div className="flex text-sm">
-                                                            <a
-                                                                href="#"
-                                                                className="group inline-flex items-center font-medium text-[#2f6b2f] hover:text-[#387538]"
-                                                            >
-                                                                <LinkIcon
-                                                                    className="h-5 w-5 text-[#2f6b2f] group-hover:text-[#387538]"
-                                                                    aria-hidden="true"
-                                                                />
-                                                                <span className="ml-2">Copy link</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -243,13 +226,13 @@ const NewReaction = ({ userId, openModal }: { userId: string, openModal:boolean 
                                             <button
                                                 type="button"
                                                 className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                                                onClick={() => setOpen(false)}
+                                                onClick={() => closeModal()}
                                             >
                                                 Cancel
                                             </button>
                                             <button
                                                 type="button"
-                                                className="ml-4 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                                className="ml-4 inline-flex justify-center rounded-md bg-[#2f6b2f] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#1b3e1b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1b3e1b]"
                                                 onClick={(e) => handleSave(e)}
                                             >
                                                 Save
