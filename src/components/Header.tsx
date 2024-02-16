@@ -10,6 +10,7 @@ import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
 import { SessionProvider } from 'next-auth/react';
 import SigninButtonHeader from './SigninButton/SigninButtonHeader'
+import SigninButtonHeaderMobile from './SigninButton/SigninButtonHeaderMobile'
 
 
 function MobileNavLink({
@@ -91,7 +92,9 @@ function MobileNavigation() {
             <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
             <MobileNavLink href="#pricing">Pricing</MobileNavLink>
             <hr className="m-2 border-slate-300/40" />
-            <MobileNavLink href="/login">Sign in</MobileNavLink>
+            <SessionProvider>
+              <SigninButtonHeaderMobile />
+            </SessionProvider>
           </Popover.Panel>
         </Transition.Child>
       </Transition.Root>
