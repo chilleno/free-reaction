@@ -6,36 +6,29 @@ import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import screenshotExpenses from '@/images/screenshots/expenses.png'
-import screenshotPayroll from '@/images/screenshots/payroll.png'
-import screenshotReporting from '@/images/screenshots/reporting.png'
-import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
+import copyrightfree from '@/images/screenshots/free-reaction-copy-free.gif'
+import extension from '@/images/screenshots/extension.png'
+import autoplay from '@/images/screenshots/free-reaction-autoplay.gif'
 
 const features = [
   {
     title: 'Free Google Chrome extension',
     description:
       "Allow your subscribers to watch your reactions in real-time meanwhile they're watching the original video.",
-    image: screenshotPayroll,
+    image: extension,
   },
   {
-    title: 'Free tier for small creators',
+    title: 'Start video automatically when reaction intro ends',
     description:
-      "Get free tokens every month. Every token let you create a reaction link that you can share with your subscribers allow them to watch your reaction with the original video.",
-    image: screenshotExpenses,
+      "You can configure your reaction to start automatically when the intro ends. So you don't have to worry about syncing your reaction with the original video.",
+    image: autoplay,
   },
   {
     title: 'Copyright Free',
     description:
-      "Focus only on creating your reactions, we take care of the rest. We ensure that your reactions are both engaging and copyright-safe. So your channel is safe from any DMCA takedown.",
-    image: screenshotVatReturns,
-  },
-  {
-    title: 'Paid tier for big creators',
-    description:
-      'Unlimited tokens, so you can create as many reaction links as you want. We also have a limited lifetime license for the first 10 Creators.',
-    image: screenshotReporting,
-  },
+      "Focus only on creating your reactions with no trace of copyrighted content, only your reaction, we take care of the rest. We ensure that your reactions are both engaging and copyright-safe. So your channel is safe from any DMCA takedown.",
+    image: copyrightfree,
+  }
 ]
 
 export function PrimaryFeatures() {
