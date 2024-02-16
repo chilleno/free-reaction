@@ -10,15 +10,15 @@ export function Footer() {
       <Container>
         <div className="mx-auto w-auto">
           <div className="flex justify-center">
-            <Link href="#home" aria-label="Home">
+            <Link href="/#" aria-label="Home">
               <Logo />
             </Link>
           </div>
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
-              <NavLink href="#faq">FAQ</NavLink>
+              <NavLink href="/#features">Features</NavLink>
+              <NavLink href="/#pricing">Pricing</NavLink>
+              <NavLink href="/#faq">FAQ</NavLink>
             </div>
           </nav>
         </div>
