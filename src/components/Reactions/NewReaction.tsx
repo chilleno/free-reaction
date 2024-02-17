@@ -76,6 +76,8 @@ const NewReaction = ({ userId, open, closeModal }: { userId: string, open: boole
         if (status === 201) {
             alert('Reaction created successfully');
             closeModal()
+        } else if (status === 400 && error?.code === "P0001") {
+            alert("You don't have enough tokens to create a new reaction. Please wait until the next month or upgrade your plan.");
         } else {
             alert('Error creating reaction');
         }
