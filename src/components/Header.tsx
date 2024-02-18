@@ -86,11 +86,11 @@ function MobileNavigation() {
         >
           <Popover.Panel
             as="div"
-            className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
+            className="absolute z-50 inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
           >
-            <MobileNavLink href="#features">Features</MobileNavLink>
-            <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-            <MobileNavLink href="#pricing">Pricing</MobileNavLink>
+            <MobileNavLink href="/#features">Features</MobileNavLink>
+            <MobileNavLink href="/#testimonials">Testimonials</MobileNavLink>
+            <MobileNavLink href="/#pricing">Pricing</MobileNavLink>
             <hr className="m-2 border-slate-300/40" />
             <SessionProvider>
               <SigninButtonHeaderMobile />
