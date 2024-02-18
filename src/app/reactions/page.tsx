@@ -139,7 +139,7 @@ export default function Home() {
                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{formatSeconds(reaction.reaction_start_time)}</td>
                                 <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                   <button
-                                    onClick={() => handleCopyUrl(reaction.reacted_content_url + "?free_reaction=https://www.reaction-free.com/reaction/" + reaction.id)}
+                                    onClick={() => handleCopyUrl("https://www.reaction-free.com/s/" + reaction.id)}
                                     className="group inline-flex items-center font-medium text-[#2f6b2f] hover:text-[#387538]"
                                   >
                                     <LinkIcon
