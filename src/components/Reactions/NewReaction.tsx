@@ -5,7 +5,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import ModalDialog from '@/components/ModalDialog'
 import supabase from '@/utils/supabase';
 
-const NewReaction = ({ userId, open, closeModal }: { userId: string, open: boolean, closeModal(): void }) => {
+const NewReaction = ({ userId, open, closeModal, getReactions }: { userId: string, open: boolean, closeModal(): void, getReactions(): void }) => {
     const [title, setTitle] = useState<string>('')
     const [startAt, setStartAt] = useState('')
     const [youtubeLink, setYoutubeLink] = useState('')
@@ -84,7 +84,6 @@ const NewReaction = ({ userId, open, closeModal }: { userId: string, open: boole
                     </p>
                 , type: 'success', title: 'Reaction created'
             })
-            //closeModal()
         } else if (status === 400 && error?.code === "P0001") {
             alert("You don't have enough tokens to create a new reaction. Please wait until the next month or upgrade your plan.");
         } else {
@@ -259,7 +258,7 @@ const NewReaction = ({ userId, open, closeModal }: { userId: string, open: boole
                 </Dialog>
             </Transition.Root>
 
-            <ModalDialog open={showAlert.state} closeModal={() => (setShowAlert({ state: false, message: <></>, type: '', title: '' }))} title={showAlert.title} message={showAlert.message} type={showAlert.type} closeModalCallback={closeModal} />
+            <ModalDialog open={showAlert.state} closeModal={() => (setShowAlert({ state: false, message: <></>, type: '', title: '' }))} title={showAlert.title} message={showAlert.message} type={showAlert.type} closeModalCallback={getReactions} />
         </>
 
     )
