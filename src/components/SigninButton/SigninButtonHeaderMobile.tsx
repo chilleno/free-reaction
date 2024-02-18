@@ -26,7 +26,12 @@ const SigninButtonHeaderMobile = () => {
 
     if (session && session.user) {
         return (
-            <div className="block md:hidden">
+            <div className="flex flex-col md:hidden">
+                <Button href={'/reactions'} className="mb-3">
+                    <span>
+                        My reactions
+                    </span>
+                </Button>
                 <Button onClick={() => { signOut({ callbackUrl: '/' }) }} color="green">
                     <span>
                         Sign out
