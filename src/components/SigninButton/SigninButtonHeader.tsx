@@ -11,6 +11,11 @@ const SigninButtonHeader = () => {
         return (
             <div className="hidden md:block">
                 <span className="mr-6">  <b>{session.user.name}</b></span>
+                <Button href={'/reactions'} className="mr-6">
+                    <span>
+                        My reactions
+                    </span>
+                </Button>
                 <Button onClick={() => { signOut({ callbackUrl: '/' }) }} color="green">
                     <span>
                         Sign out
