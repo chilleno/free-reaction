@@ -35,13 +35,13 @@ export default function Home({ params }: { params: { slug: string } }) {
 
         <div
           id="volume"
-          className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded flex gap-2"
+          className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold px-4 rounded flex gap-2 w-18 min-w-18 max-w-18"
         >
           <input type="range" value={volume} onChange={changeVolume} />
-          <input id="volume_value_input" type="number" className="text-black max-w-14 text-right rounded-sm" value={volume} readOnly onChange={(e) => e.preventDefault} />
+          <input id="volume_value_input" type="number" className="text-white bg-transparent border-0 font-bold max-w-20 min-w-20 w-20 text-right rounded-sm" value={volume} readOnly onChange={(e) => e.preventDefault} />
         </div>
         <div
-          className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded flex gap-2"
+          className="bg-[#2f6b2f] hover:bg-[#4ca84c] hover:text-slate-100 text-white font-bold py-2 px-4 rounded flex gap-2 w-18 min-w-18 max-w-18"
         >
           <h6 id="reaction_current_time_formatted">0:00</h6>
           <input id="reaction_current_time" type="number" className="text-black max-w-14 text-right rounded-sm hidden" />
