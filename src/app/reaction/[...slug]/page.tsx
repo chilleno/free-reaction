@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function Home({ params }: { params: { slug: string } }) {
   const [volume, setVolume] = useState(100);
-  const [startAt, setStartAt] = useState(159);
+  const [startAt, setStartAt] = useState(params.slug[1]);
 
   const changeVolume = (e: any) => {
     setVolume(e.target.value);
@@ -13,7 +13,7 @@ export default function Home({ params }: { params: { slug: string } }) {
     <main className="flex flex-col items-center gap-5 mt-2">
       <iframe
         id="iframe_youtube"
-        src={"https://www.youtube-nocookie.com/embed/"+params.slug+"?enablejsapi=1&origin=https://www.reaction-free.com&controls=0"}
+        src={"https://www.youtube-nocookie.com/embed/"+params.slug[0]+"?enablejsapi=1&origin=https://www.reaction-free.com&controls=0"}
         width="590"
         height="330"
       />
