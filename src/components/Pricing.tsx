@@ -135,7 +135,7 @@ export function Pricing() {
           <Plan
             name="Starter"
             price="Free"
-            description="Good for small creators."
+            description="Good for trying out the service"
             href="/login"
             features={[
               'Create limited amount of reaction links',
@@ -145,12 +145,12 @@ export function Pricing() {
           <Plan
             name="Premium"
             price="$10/mo"
-            description="Perfect for small creators"
+            description="Perfect for big creators"
             href="/register"
             features={[
-              'Create x3 amount of reaction links',
-              'Get x3 the amount of tokens every month (needed to create reaction links)',
-              'Access to new features first',
+              'Create x6 amount of reaction links',
+              'Get x6 the amount of tokens every month (needed to create reaction links)',
+              'Early access to new features',
             ]}
           />
           <Plan
@@ -162,7 +162,8 @@ export function Pricing() {
             features={[
               'Create unlimited amount of reaction links FOREVER',
               'Avoid token system FOREVER',
-              'Access to new features first',
+              'Early access to new features',
+              'Only first 10 creators can get this deal',
             ]}
           />
         </div>
