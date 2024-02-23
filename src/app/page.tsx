@@ -35,7 +35,7 @@ export default function Home({
           /* <Testimonials /> */
         }
         <SessionProvider>
-          <Pricing callback={searchParams?.callback} />
+          <Pricing callbackString={searchParams?.callback ? searchParams?.callback.toString() : 'nocallback'} />
         </SessionProvider>
         <Faqs />
         <CallToAction />

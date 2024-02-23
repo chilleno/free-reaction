@@ -134,17 +134,17 @@ function Plan({
   )
 }
 
-export function Pricing({ callback }: { callback?: string }) {
+export function Pricing({ callbackString }: { callbackString?: string | undefined }) {
   const { data: session, status } = useSession();
   const uuid = session?.user?.id;
 
   useEffect(() => {
     //get first param from url
-    if (callback === 'monthly' && status === 'authenticated') {
+    if (callbackString === 'monthly' && status === 'authenticated') {
       return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/2d778270-276f-4ffb-a4cb-e4722314151b?checkout[custom][user_id]=' + uuid)
     }
 
-    if (callback === 'founder' && status === 'authenticated') {
+    if (callbackString === 'founder' && status === 'authenticated') {
       return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/4a742530-f29c-4521-b47c-e86bc63a0de1?checkout[custom][user_id]=' + uuid)
     }
 
