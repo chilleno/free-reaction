@@ -2,6 +2,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@heroicons/react/24/outline'
 import ModalDialog from '@/components/ModalDialog'
 import supabase from '@/utils/supabase';
 
@@ -169,6 +170,7 @@ const NewReaction = ({ userId, open, closeModal, getReactions }: { userId: strin
                                                                         value={title}
                                                                         onChange={(e) => { setTitle(e.target.value) }}
                                                                     />
+                                                                    <span className="text-xs text-pretty text-gray-600 italic px-3">This is only a name for you to identify your link</span>
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -188,6 +190,7 @@ const NewReaction = ({ userId, open, closeModal, getReactions }: { userId: strin
                                                                         onBlur={(e) => { handleYoutubeLink(e) }}
                                                                         defaultValue={youtubeLink}
                                                                     />
+                                                                     <span className="text-xs text-pretty text-gray-600 italic px-3">Here you need to paste the youtube reaction link</span>
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -207,6 +210,7 @@ const NewReaction = ({ userId, open, closeModal, getReactions }: { userId: strin
                                                                         onBlur={(e) => { handleReactedContent(e) }}
                                                                         defaultValue={reactedContent}
                                                                     />
+                                                                   <span className="text-xs text-pretty text-gray-600 italic px-3">Here you need to paste the Crunchyroll content link</span>
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -227,6 +231,7 @@ const NewReaction = ({ userId, open, closeModal, getReactions }: { userId: strin
                                                                         onBlur={(e) => { handleValidateStartAt(e) }}
                                                                         defaultValue={startAt}
                                                                     />
+                                                                    <span className="text-xs text-pretty text-gray-600 italic px-3">Timestamp when you start the content in your youtube video</span>
                                                                 </div>
                                                             </div>
                                                         </div>
