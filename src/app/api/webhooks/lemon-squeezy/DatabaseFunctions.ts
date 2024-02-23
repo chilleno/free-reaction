@@ -10,7 +10,7 @@ enum Profiles {
 export const updateProfileOrder = async (OrderObject: OrderObject, userId: string): Promise<Boolean> => {
     const { error, status } = await supabaseAuth
         .from('users')
-        .update({ profile: Profiles.founder })
+        .update({ profile: Profiles.premium })
         .eq('id', userId)
     if (status === 204) {
         return true;
