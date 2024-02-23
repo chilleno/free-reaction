@@ -8,15 +8,19 @@ enum Profiles {
 }
 
 export const updateProfileOrder = async (OrderObject: OrderObject, userId: string): Promise<Boolean> => {
-    const { error, status } = await supabaseAuth
-        .from('users')
-        .update({ profile: Profiles.founder })
-        .eq('id', userId)
-    if (status === 204) {
-        return true;
+    if (OrderObject.attributes.status === 'paid' && OrderObject.attributes.total === 19999) {
+        const { error, status } = await supabaseAuth
+            .from('users')
+            .update({ profile: Profiles.founder })
+            .eq('id', userId)
+        if (status === 204) {
+            return true;
+        } else {
+            console.log(error);
+            return false;
+        }
     } else {
-        console.log(error);
-        return false;
+        return true;
     }
 }
 
@@ -28,7 +32,7 @@ export const updateProfileSubscription = async (SubscriptionObject: Subscription
         .update({ profile: profile })
         .eq('id', userId)
 
-    if (status === 201) {
+    if (status === 204) {
         return true;
     } else {
         console.log(error);
