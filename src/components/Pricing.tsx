@@ -141,11 +141,11 @@ export function Pricing({ callbackString }: { callbackString?: string | undefine
   useEffect(() => {
     //get first param from url
     if (callbackString === 'monthly' && status === 'authenticated') {
-      return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/2d778270-276f-4ffb-a4cb-e4722314151b?checkout[custom][user_id]=' + uuid)
+      return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/8b71c4b2-7896-4648-aa8e-c78162e8e1d2?checkout[custom][user_id]=' + uuid)
     }
 
     if (callbackString === 'founder' && status === 'authenticated') {
-      return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/4a742530-f29c-4521-b47c-e86bc63a0de1?checkout[custom][user_id]=' + uuid)
+      return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/64ba9331-e2be-405e-a4cb-444d90fd1e93?checkout[custom][user_id]=' + uuid)
     }
 
   }, [status])
