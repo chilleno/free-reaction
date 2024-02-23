@@ -8,6 +8,7 @@ enum Profiles {
 }
 
 export const updateProfileOrder = async (OrderObject: OrderObject, userId: string): Promise<Boolean> => {
+    console.log('OrderObject', OrderObject);
     if (OrderObject.attributes.status === 'paid' && OrderObject.attributes.total === 19999) {
         const { error, status } = await supabaseAuth
             .from('users')
