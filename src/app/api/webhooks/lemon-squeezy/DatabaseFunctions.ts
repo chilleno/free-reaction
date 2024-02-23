@@ -13,7 +13,7 @@ export const updateProfileOrder = async (OrderObject: OrderObject, userId: strin
         const { error, status } = await supabaseAuth
             .from('users')
             .update({ profile: Profiles.founder })
-            .eq('id', userId)
+            .eq('email', OrderObject.attributes.user_email)
         if (status === 204) {
             return true;
         } else {
