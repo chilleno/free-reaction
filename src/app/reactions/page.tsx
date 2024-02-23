@@ -8,12 +8,17 @@ import supabase from '@/utils/supabase';
 import { LinkIcon } from '@heroicons/react/20/solid'
 import EmptyState from '@/components/Reactions/EmptyState'
 import { Container } from '@/components/Container'
+import EditReaction from '@/components/Reactions/EditReaction'
 
 export default function Home() {
   const [reactions, setReactions] = useState<any[]>([]);
   const [openModal, setOpenModal] = useState(false);
   const { data: session, status } = useSession();
   let uuid = session?.user?.id;
+
+
+  const [editOpenModal, setEditOpenModal] = useState(false);
+  const [EditedReaction, setEditedReaction] = useState<any>();
 
   const handleCopyUrl = (url: string) => {
     navigator.clipboard.writeText(url);
@@ -27,6 +32,11 @@ export default function Home() {
     let date = new Date(0);
     date.setSeconds(seconds);
     return date.toISOString().substr(14, 5);
+  }
+
+  const handleEditModal = (reaction: any) => {
+    setEditedReaction(reaction);
+    setEditOpenModal(true);
   }
 
   const getReactions = async () => {
@@ -150,9 +160,9 @@ export default function Home() {
                                   </button>
                                 </td>
                                 <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                  <a href="#" className="text-[#2f6b2f] hover:text-[#1b3e1b]">
+                                  <button onClick={() => handleEditModal(reaction)} className="text-[#2f6b2f] hover:text-[#1b3e1b]">
                                     Edit<span className="sr-only">, {reaction.name}</span>
-                                  </a>
+                                  </button>
                                 </td>
                                 <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                   <button
@@ -181,6 +191,8 @@ export default function Home() {
           </div>
         </Container>
         <NewReaction userId={uuid} open={openModal} closeModal={() => setOpenModal(false)} getReactions={getReactions} />
+
+        <EditReaction reaction={EditedReaction} userId={uuid} open={editOpenModal} closeModal={() => setEditOpenModal(false)} getReactions={getReactions} />
       </main>
       <Footer />
     </>
