@@ -10,7 +10,7 @@ enum Profiles {
 export const updateProfileOrder = async (OrderObject: OrderObject, userId: string): Promise<Boolean> => {
     const { error, status } = await supabaseAuth
         .from('users')
-        .update({ profile: Profiles.premium })
+        .update({ profile: Profiles.founder })
         .eq('id', userId)
     if (status === 204) {
         return true;
@@ -71,7 +71,7 @@ export const createInvoice = async (SubscriptionInvoiceObject: SubscriptionInvoi
             created_at: SubscriptionInvoiceObject.attributes.created_at,
             updated_at: SubscriptionInvoiceObject.attributes.updated_at,
         })
-    if (status === 200) {
+    if (status === 201) {
         return { status: 200 };
     } else {
         console.log('error creating invoice')
