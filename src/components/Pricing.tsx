@@ -184,7 +184,7 @@ export function Pricing({ callbackString }: { callbackString?: string | undefine
             name="Premium"
             price="$10/mo"
             description="Perfect for big creators"
-            onClick={() => { signIn('google', { callbackUrl: '/?buyCallback=monthly' }) }}
+            onClick={() => { signIn('google', { callbackUrl: '/?callback=monthly' }) }}
             href={status === 'unauthenticated' || status === 'loading' ? '#' : (session?.user?.profile === 'premium' || session?.user?.profile === 'founder' ? "/reactions" : "/redirect?plan=monthly&id=" + uuid)}
             features={[
               'Create x6 amount of reaction links',
@@ -197,7 +197,7 @@ export function Pricing({ callbackString }: { callbackString?: string | undefine
             name="Release Time Premium"
             price="$199"
             description="One time payment. Only first 10 creators can get this deal"
-            onClick={() => { signIn('google', { callbackUrl: '/?buyCallback=founder' }) }}
+            onClick={() => { signIn('google', { callbackUrl: '/?callback=founder' }) }}
             href={status === 'unauthenticated' || status === 'loading' ? '#' : (session?.user?.profile === 'premium' || session?.user?.profile === 'founder' ? "/reactions" : "/redirect?plan=founder&id=" + uuid)}
             features={[
               'Create unlimited amount of reaction links FOREVER',
