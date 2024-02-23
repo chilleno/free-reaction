@@ -8,20 +8,15 @@ enum Profiles {
 }
 
 export const updateProfileOrder = async (OrderObject: OrderObject, userId: string): Promise<Boolean> => {
-    console.log('OrderObject', OrderObject);
-    if (OrderObject.attributes.status === 'paid' && OrderObject.attributes.total === 19999) {
-        const { error, status } = await supabaseAuth
-            .from('users')
-            .update({ profile: Profiles.founder })
-            .eq('email', OrderObject.attributes.user_email)
-        if (status === 204) {
-            return true;
-        } else {
-            console.log(error);
-            return false;
-        }
-    } else {
+    const { error, status } = await supabaseAuth
+        .from('users')
+        .update({ profile: Profiles.founder })
+        .eq('id', userId)
+    if (status === 204) {
         return true;
+    } else {
+        console.log(error);
+        return false;
     }
 }
 
