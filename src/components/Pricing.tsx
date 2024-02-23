@@ -1,7 +1,10 @@
+"use client"
 import clsx from 'clsx'
-
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { signIn, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation'
+import { useEffect } from 'react';
 
 function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -54,6 +57,7 @@ function Plan({
   name,
   price,
   description,
+  onClick,
   href,
   features,
   featured = false,
@@ -61,10 +65,13 @@ function Plan({
   name: string
   price: string
   description: string
+  onClick?: () => void
   href: string
   features: Array<string>
   featured?: boolean
 }) {
+
+
   return (
     <section
       className={clsx(
@@ -98,20 +105,51 @@ function Plan({
           </li>
         ))}
       </ul>
-      <Button
-        href={href}
-        variant={featured ? 'solid' : 'outline'}
-        color="white"
-        className="mt-8"
-        aria-label={`Get started with the ${name} plan for ${price}`}
-      >
-        Get started
-      </Button>
+      {
+        onClick ? (
+          <Button
+            onClick={onClick}
+            href={undefined}
+            variant={featured ? 'solid' : 'outline'}
+            color="white"
+            className="mt-8"
+            aria-label={`Get started with the ${name} plan for ${price}`}
+          >
+            Get started
+          </Button>
+        )
+          : (
+            <Button
+              href={href}
+              variant={featured ? 'solid' : 'outline'}
+              color="white"
+              className="mt-8"
+              aria-label={`Get started with the ${name} plan for ${price}`}
+            >
+              Get started
+            </Button>
+          )
+      }
     </section>
   )
 }
 
-export function Pricing() {
+export function Pricing({ callback }: { callback?: string }) {
+  const { data: session, status } = useSession();
+  const uuid = session?.user?.id;
+
+  useEffect(() => {
+    //get first param from url
+    if (callback === 'monthly' && status === 'authenticated') {
+      return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/2d778270-276f-4ffb-a4cb-e4722314151b?checkout[custom][user_id]=' + uuid)
+    }
+
+    if (callback === 'founder' && status === 'authenticated') {
+      return redirect('https://reaction-free.lemonsqueezy.com/checkout/buy/4a742530-f29c-4521-b47c-e86bc63a0de1?checkout[custom][user_id]=' + uuid)
+    }
+
+  }, [status])
+
   return (
     <section
       id="pricing"
@@ -136,7 +174,7 @@ export function Pricing() {
             name="Starter"
             price="Free"
             description="Good for trying out the service"
-            href="/login"
+            href={status === 'unauthenticated' || status === 'loading' ? "/login" : "/reactions"}
             features={[
               'Create limited amount of reaction links',
               'Get new tokens every month (needed to create reaction links)'
@@ -146,7 +184,8 @@ export function Pricing() {
             name="Premium"
             price="$10/mo"
             description="Perfect for big creators"
-            href="/register"
+            onClick={() => { signIn('google', { callbackUrl: '/?buyCallback=monthly' }) }}
+            href={status === 'unauthenticated' || status === 'loading' ? '#' : (session?.user?.profile === 'premium' || session?.user?.profile === 'founder' ? "/reactions" : "/redirect?plan=monthly&id=" + uuid)}
             features={[
               'Create x6 amount of reaction links',
               'Get x6 the amount of tokens every month (needed to create reaction links)',
@@ -158,7 +197,8 @@ export function Pricing() {
             name="Release Time Premium"
             price="$199"
             description="One time payment. Only first 10 creators can get this deal"
-            href="/register"
+            onClick={() => { signIn('google', { callbackUrl: '/?buyCallback=founder' }) }}
+            href={status === 'unauthenticated' || status === 'loading' ? '#' : (session?.user?.profile === 'premium' || session?.user?.profile === 'founder' ? "/reactions" : "/redirect?plan=founder&id=" + uuid)}
             features={[
               'Create unlimited amount of reaction links FOREVER',
               'Avoid token system FOREVER',
