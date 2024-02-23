@@ -1,3 +1,4 @@
+"use client"
 import { CallToAction } from '@/components/CallToAction'
 import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
@@ -7,8 +8,17 @@ import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
+import { SessionProvider } from 'next-auth/react'
 
-export default function Home() {
+export default function Home({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+
+ 
   return (
     <>
       <Header />
@@ -24,7 +34,9 @@ export default function Home() {
           /* commented like this to keep the order */
           /* <Testimonials /> */
         }
-        <Pricing />
+        <SessionProvider>
+          <Pricing callback={searchParams?.callback} />
+        </SessionProvider>
         <Faqs />
         <CallToAction />
         <div className="fixed bottom-4 left-4 flex justify-center items-center cursor-pointer z-40">
