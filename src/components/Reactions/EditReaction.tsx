@@ -5,13 +5,13 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { PlusIcon } from '@heroicons/react/24/outline'
 import ModalDialog from '@/components/ModalDialog'
 import supabase from '@/utils/supabase';
+import { format } from 'path'
 
 const EditReaction = ({ reaction, userId, open, closeModal, getReactions }: { reaction: any, userId: string, open: boolean, closeModal(): void, getReactions(): void }) => {
-    const [title, setTitle] = useState<string>(reaction.title)
-    const [startAt, setStartAt] = useState(reaction.reaction_start_time)
-    const [youtubeLink, setYoutubeLink] = useState(reaction.youtube_video_code)
-    const [reactedContent, setReactedContent] = useState(reaction.reacted_content_url)
-
+    const [title, setTitle] = useState<string>('')
+    const [startAt, setStartAt] = useState('')
+    const [youtubeLink, setYoutubeLink] = useState('')
+    const [reactedContent, setReactedContent] = useState('')
     const [showAlert, setShowAlert] = useState({ state: false, message: <></>, type: '', title: '' })
 
     const handleYoutubeLink = (element: any) => {
@@ -51,6 +51,13 @@ const EditReaction = ({ reaction, userId, open, closeModal, getReactions }: { re
         return (minutes * 60) + seconds
     }
 
+    //create function that convert seconds to minutes:seconds
+    const formatSeconds = (seconds: number) => {
+        let date = new Date(0);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(14, 5);
+    }
+
     //create function to insert with supabase adapter 
     const handleSave = async (e: any) => {
         e.preventDefault()
@@ -76,7 +83,8 @@ const EditReaction = ({ reaction, userId, open, closeModal, getReactions }: { re
 
         const { error, status, statusText } = await supabase
             .from('reactions')
-            .update({ id: reaction.id, title: title, reaction_start_time: convertToSeconds(startAt), youtube_video_code: youtubeLink, user_id: userId, reacted_content_url: reactedContent })
+            .update({ title: title, reaction_start_time: convertToSeconds(startAt), youtube_video_code: youtubeLink, user_id: userId, reacted_content_url: reactedContent })
+            .eq('id', reaction.id)
         if (status === 204) {
             setShowAlert({
                 state: true, message:
@@ -105,6 +113,15 @@ const EditReaction = ({ reaction, userId, open, closeModal, getReactions }: { re
             alert('The reacted content link is not valid')
         }
     }
+
+    useEffect(() => {
+        if (open) {
+            setTitle(reaction.title)
+            setStartAt(formatSeconds(reaction.reaction_start_time))
+            setYoutubeLink(reaction.youtube_video_code)
+            setReactedContent(reaction.reacted_content_url)
+        }
+    },[open])
 
     return (
         <>
