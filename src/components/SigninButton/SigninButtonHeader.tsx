@@ -71,14 +71,6 @@ const SigninButtonHeader = () => {
             </div>
         )
     }
-    if (session === null) {
-        return (
-            <div className="hidden md:block">
-                <NavLink href="/login">Sign in</NavLink>
-            </div>
-        )
-    }
-
     if (status !== 'authenticated') {
         return (
             <div className="hidden md:block">
