@@ -79,11 +79,13 @@ const SigninButtonHeader = () => {
         )
     }
 
-    return (
-        <div className="hidden md:block">
-            <NavLink href="/login">Sign in</NavLink>
-        </div>
-    )
+    if (status !== 'authenticated') {
+        return (
+            <div className="hidden md:block">
+                <NavLink href="/login">Sign in</NavLink>
+            </div>
+        )
+    }
 }
 
 export default SigninButtonHeader;
