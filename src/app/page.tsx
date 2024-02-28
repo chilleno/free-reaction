@@ -8,6 +8,7 @@ import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
+import WorkingFeatures from '@/components/WorkingFeatures'
 import { SessionProvider } from 'next-auth/react'
 
 export default function Home({
@@ -25,6 +26,7 @@ export default function Home({
       <main>
         <Hero />
         <PrimaryFeatures />
+        <WorkingFeatures />
         {
           /* commented like this to keep the order */
           /* <SecondaryFeatures /> */
