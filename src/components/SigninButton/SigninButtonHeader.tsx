@@ -71,7 +71,7 @@ const SigninButtonHeader = () => {
             </div>
         )
     }
-    if (status !== 'authenticated') {
+    if (status === 'unauthenticated' || status === 'loading') {
         return (
             <div className="hidden md:block">
                 <NavLink href="/login">Sign in</NavLink>
