@@ -43,7 +43,7 @@ export function Hero() {
           <span className="ml-3">Download the extension</span>
         </Button>
         <Button
-          href="https://youtu.be/1y7ww-seaPA"
+          href="https://www.youtube.com/watch?v=3-mfB__th7g"
           variant="outline"
           target="_blank"
         >
