@@ -28,7 +28,7 @@ export function CallToAction() {
             Download the extension
           </Button>
           <Button
-            href="https://youtu.be/1y7ww-seaPA"
+            href="https://www.youtube.com/watch?v=3-mfB__th7g"
             target="_blank"
             color="white"
             className="mt-10 ml-2"
